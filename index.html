@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Door Code Practice</title>
+
+  <!-- iOS “app-like” meta -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1>Door Code Practice</h1>
+
+    <div id="dots" class="dots" aria-live="polite"></div>
+    <div id="status" class="status" role="status" aria-live="polite">Enter the code</div>
+
+    <div class="pad" id="pad"></div>
+
+    <details class="settings">
+      <summary>Settings</summary>
+      <label>
+        Code:
+        <input id="codeInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" />
+      </label>
+      <button id="saveCode">Save Code</button>
+      <button id="reset">Reset Input</button>
+    </details>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

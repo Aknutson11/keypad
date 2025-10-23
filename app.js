@@ -29,16 +29,17 @@ function renderDots() {
 }
 renderDots();
 
-// Build keypad
+// Build keypad (use '#' for the submit/return key)
 const rows = [
   ["1","2","3"],
   ["4","5","6"],
   ["7","8","9"],
-  ["⌫","0","↵"]
+  ["⌫","0","#"]
 ];
 rows.flat().forEach((k) => {
   const b = document.createElement("button");
   b.className = "key";
+  // visually show '#' but treat it as the enter action internally
   b.textContent = k;
   b.addEventListener("click", () => onKey(k));
   pad.appendChild(b);
@@ -52,12 +53,13 @@ function setStatus(msg, cls="") {
 function onKey(k) {
   if (k === "⌫") {
     input = input.slice(0, -1);
-  } else if (k === "↵") {
+  } else if (k === "#") {
+    // submit only when user presses the return/submit key
     check();
   } else {
     if (input.length < correctCode.length && input.length < MAX_LEN) {
       input += k;
-      if (input.length === correctCode.length) check();
+      // do NOT auto-submit when length reached; wait for '#'
     }
   }
   renderDots();
